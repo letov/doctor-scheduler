@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+
+  doctor-scheduler-db:
+    image: mysql
+    container_name: doctor-scheduler-db-container
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      doctor-scheduler-network:
+        ipv4_address: "${DB_HOST}"
+    ports:
+      - "33065:${DB_PORT}"
+    volumes:
+      - doctor-scheduler-db-data:/var/lib/mysql
+
+networks:
+  doctor-scheduler-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.10.0/24
+
+volumes:
+  doctor-scheduler-db-data:
+    name: doctor-scheduler-volume
