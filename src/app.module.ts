@@ -6,7 +6,6 @@ import { CustomerModule } from './customer/customer.module';
 import { ScheduleInnerModule } from './schedule/scheduleInnerModule';
 import { ScheduleModule } from '@nestjs/schedule';
 import { CronjobModule } from './cronjob/cronjob.module';
-import { NotificationService } from './notification/notification.service';
 import { NotificationModule } from './notification/notification.module';
 
 @Module({
@@ -18,10 +17,10 @@ import { NotificationModule } from './notification/notification.module';
     ScheduleModule.forRoot(),
     CustomerModule,
     ScheduleInnerModule,
-    CronjobModule,
     NotificationModule,
+    CronjobModule,
   ],
   controllers: [],
-  providers: [NotificationService],
+  providers: [],
 })
 export class AppModule {}
