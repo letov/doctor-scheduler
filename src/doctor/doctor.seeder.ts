@@ -12,7 +12,7 @@ export class DoctorSeeder implements Seeder {
   ) {}
 
   async seed(): Promise<any> {
-    const doctors = DataFactory.createForClass(Doctor).generate(100);
+    const doctors = DataFactory.createForClass(Doctor).generate(10);
 
     return this.repositoryDoctor.save(doctors);
   }

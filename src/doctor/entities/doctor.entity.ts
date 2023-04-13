@@ -3,25 +3,34 @@ import {
   Entity,
   Column,
   ManyToMany,
+  JoinTable,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Factory } from 'nestjs-seeder';
-import { Doctor } from '../../doctors/entities/doctor.entity';
+import { DataFactory, Factory } from 'nestjs-seeder';
+import { Speciality } from '../../speciality/entities/speciality.entity';
 
 @Entity()
-export class Speciality {
+export class Doctor {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({
     length: 50,
   })
-  @Factory((faker) => faker.name.jobTitle())
+  @Factory((faker) => faker.name.fullName())
   name: string;
 
-  @ManyToMany(() => Doctor, (doctor) => doctor.specialities)
-  doctors: Doctor[];
+  @ManyToMany(() => Speciality, (speciality) => speciality.doctors, {
+    cascade: true,
+  })
+  @JoinTable()
+  @Factory(() =>
+    DataFactory.createForClass(Speciality).generate(
+      1 + Math.floor(Math.random() * 5),
+    ),
+  )
+  specialities: Speciality[];
 
   @CreateDateColumn({
     type: 'timestamp',

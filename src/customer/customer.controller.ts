@@ -1,11 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from "@nestjs/common";
-import { CustomersService } from './customers.service';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 
 @Controller('customers')
-export class CustomersController {
-  constructor(private readonly customersService: CustomersService) {}
+export class CustomerController {
+  constructor(private readonly customersService: CustomerService) {}
 
   @Post()
   create(@Body() createCustomerDto: CreateCustomerDto) {

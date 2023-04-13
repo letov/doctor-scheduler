@@ -1,29 +1,27 @@
 import {
   PrimaryGeneratedColumn,
   Entity,
+  Column,
+  ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
 } from 'typeorm';
-import { Customer } from '../../customers/entities/customer.entity';
-import { Doctor } from '../../doctors/entities/doctor.entity';
+import { Factory } from 'nestjs-seeder';
+import { Doctor } from '../../doctor/entities/doctor.entity';
 
 @Entity()
-export class Schedule {
+export class Speciality {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Customer)
-  customer: Customer;
-
-  @ManyToOne(() => Doctor)
-  doctor: Doctor;
-
-  @CreateDateColumn({
-    type: 'timestamp',
-    nullable: false,
+  @Column({
+    length: 50,
   })
-  appointment_at: Date;
+  @Factory((faker) => faker.name.jobTitle())
+  name: string;
+
+  @ManyToMany(() => Doctor, (doctor) => doctor.specialities)
+  doctors: Doctor[];
 
   @CreateDateColumn({
     type: 'timestamp',

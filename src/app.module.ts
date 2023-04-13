@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmAsyncConfig } from './config/typeorm.config';
-import { CustomersModule } from './customers/customers.module';
+import { CustomerModule } from './customer/customer.module';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { CustomersModule } from './customers/customers.module';
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
-    CustomersModule,
+    CustomerModule,
   ],
   controllers: [],
   providers: [],
