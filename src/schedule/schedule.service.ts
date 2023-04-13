@@ -34,6 +34,10 @@ export class ScheduleService {
       });
   }
 
+  private dateToSql(date: Date): string {
+    return date.toISOString().slice(0, 19).replace('T', ' ');
+  }
+
   private existAppointment(
     createScheduleDto: CreateScheduleDto,
   ): Promise<boolean> {
@@ -52,8 +56,8 @@ export class ScheduleService {
       .andWhere('appointment_at < :to')
       .andWhere('doctor_id = :doctorId')
       .setParameters({
-        from: from.toISOString().slice(0, 19).replace('T', ' '),
-        to: to.toISOString().slice(0, 19).replace('T', ' '),
+        from: this.dateToSql(from),
+        to: this.dateToSql(to),
         doctorId: createScheduleDto.doctorId,
       })
       .getExists();
@@ -92,8 +96,8 @@ export class ScheduleService {
       .where('appointment_at > :from')
       .andWhere('appointment_at < :to')
       .setParameters({
-        from: from.toISOString().slice(0, 19).replace('T', ' '),
-        to: to.toISOString().slice(0, 19).replace('T', ' '),
+        from: this.dateToSql(from),
+        to: this.dateToSql(to),
       })
       .getMany();
   }
