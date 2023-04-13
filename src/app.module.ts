@@ -7,6 +7,7 @@ import { ScheduleInnerModule } from './schedule/scheduleInnerModule';
 import { ScheduleModule } from '@nestjs/schedule';
 import { CronjobModule } from './cronjob/cronjob.module';
 import { NotificationModule } from './notification/notification.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { NotificationModule } from './notification/notification.module';
     ScheduleInnerModule,
     NotificationModule,
     CronjobModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

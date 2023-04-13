@@ -10,6 +10,6 @@ export class NotificationService {
       schedule.appointmentAt,
     )}, ${format.asString('hh:mm', schedule.appointmentAt)}, clinic address`;
 
-    console.log('send', msg, schedule.customer.phone);
+    //TODO: send msg to schedule.customer.phone
   }
 }
