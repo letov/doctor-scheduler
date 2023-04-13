@@ -8,7 +8,7 @@ import {
 import { Customer } from '../../customer/entities/customer.entity';
 import { Doctor } from '../../doctor/entities/doctor.entity';
 
-@Entity()
+@Entity('schedules')
 export class Schedule {
   @PrimaryGeneratedColumn()
   id: number;

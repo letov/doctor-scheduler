@@ -9,7 +9,7 @@ import {
 import { Factory } from 'nestjs-seeder';
 import { Doctor } from '../../doctor/entities/doctor.entity';
 
-@Entity()
+@Entity('specialities')
 export class Speciality {
   @PrimaryGeneratedColumn()
   id: number;

@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { Factory } from 'nestjs-seeder';
 
-@Entity()
+@Entity('customers')
 export class Customer {
   @PrimaryGeneratedColumn()
   id: number;
