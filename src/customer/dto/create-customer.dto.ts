@@ -1,6 +1,4 @@
-import { IsNotEmpty, MaxLength, Validate } from 'class-validator';
-import { Unique } from 'typeorm';
-import { Customer } from '../entities/customer.entity';
+import { IsNotEmpty, MaxLength } from 'class-validator';
 
 export class CreateCustomerDto {
   @IsNotEmpty()
