@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { DataFactory, Seeder } from 'nestjs-seeder';
-import { Doctor } from './doctor.model';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Doctor } from './entities/doctor.entity';
+
 @Injectable()
 export class DoctorSeeder implements Seeder {
   constructor(

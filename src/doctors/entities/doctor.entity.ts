@@ -7,19 +7,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Speciality } from '../speciality/speciality.model';
 import { DataFactory, Factory } from 'nestjs-seeder';
-
-export interface IDoctor {
-  id: number;
-  name: string;
-  specialities: Speciality[];
-  created_at: Date;
-  updated_at: Date;
-}
+import { Speciality } from '../../specialities/entities/speciality.entity';
 
 @Entity()
-export class Doctor implements IDoctor {
+export class Doctor {
   @PrimaryGeneratedColumn()
   id: number;
 

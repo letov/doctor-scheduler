@@ -7,16 +7,8 @@ import {
 } from 'typeorm';
 import { Factory } from 'nestjs-seeder';
 
-export interface ICustomer {
-  id: number;
-  name: string;
-  phone: string;
-  created_at: Date;
-  updated_at: Date;
-}
-
 @Entity()
-export class Customer implements ICustomer {
+export class Customer {
   @PrimaryGeneratedColumn()
   id: number;
 

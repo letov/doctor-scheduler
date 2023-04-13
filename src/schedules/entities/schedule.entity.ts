@@ -5,20 +5,11 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { Doctor } from '../doctor/doctor.model';
-import { Customer } from '../customer/customer.model';
-
-export interface ISchedule {
-  id: number;
-  customer: Customer;
-  doctor: Doctor;
-  appointment_at: Date;
-  created_at: Date;
-  updated_at: Date;
-}
+import { Customer } from '../../customers/entities/customer.entity';
+import { Doctor } from '../../doctors/entities/doctor.entity';
 
 @Entity()
-export class Schedule implements ISchedule {
+export class Schedule {
   @PrimaryGeneratedColumn()
   id: number;
 
