@@ -14,7 +14,7 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: ['./dist/**/*.model.js'],
+      entities: ['./dist/**/*.entity.js'],
       logging: true,
       synchronize: true,
       namingStrategy: new SnakeNamingStrategy(),
