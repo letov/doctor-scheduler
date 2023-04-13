@@ -34,7 +34,7 @@ export class ScheduleService {
       });
   }
 
-  private async existAppointment(
+  private existAppointment(
     createScheduleDto: CreateScheduleDto,
   ): Promise<boolean> {
     const from = new Date(createScheduleDto.appointmentAt);
