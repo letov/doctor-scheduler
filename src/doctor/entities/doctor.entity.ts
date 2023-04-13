@@ -17,12 +17,14 @@ export class Doctor {
 
   @Column({
     length: 50,
+    nullable: false,
   })
   @Factory((faker) => faker.name.fullName())
   name: string;
 
   @ManyToMany(() => Speciality, (speciality) => speciality.doctors, {
     cascade: true,
+    nullable: false,
   })
   @JoinTable()
   @Factory(() =>
@@ -36,12 +38,12 @@ export class Doctor {
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
-  updated_at: Date;
+  updatedAt: Date;
 }

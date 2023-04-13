@@ -16,6 +16,7 @@ export class Speciality {
 
   @Column({
     length: 50,
+    nullable: false,
   })
   @Factory((faker) => faker.name.jobTitle())
   name: string;
@@ -27,12 +28,12 @@ export class Speciality {
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
-  updated_at: Date;
+  updatedAt: Date;
 }

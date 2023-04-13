@@ -13,28 +13,32 @@ export class Schedule {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Customer)
+  @ManyToOne(() => Customer, {
+    nullable: false,
+  })
   customer: Customer;
 
-  @ManyToOne(() => Doctor)
+  @ManyToOne(() => Doctor, {
+    nullable: false,
+  })
   doctor: Doctor;
 
   @CreateDateColumn({
     type: 'timestamp',
     nullable: false,
   })
-  appointment_at: Date;
+  appointmentAt: Date;
 
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
-  updated_at: Date;
+  updatedAt: Date;
 }

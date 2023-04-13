@@ -14,6 +14,7 @@ export class Customer {
 
   @Column({
     length: 50,
+    nullable: false,
   })
   @Factory((faker) => faker.name.fullName())
   name: string;
@@ -21,6 +22,7 @@ export class Customer {
   @Column({
     length: 50,
     unique: true,
+    nullable: false,
   })
   @Factory((faker) => faker.phone.number())
   phone: string;
@@ -29,12 +31,12 @@ export class Customer {
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
-  updated_at: Date;
+  updatedAt: Date;
 }
