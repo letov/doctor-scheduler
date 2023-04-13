@@ -81,4 +81,20 @@ export class ScheduleService {
   remove(id: number) {
     return this.repositorySchedule.delete(id);
   }
+
+  getSchedulesBeforeAppointment(hours: number): Promise<Schedule[]> {
+    const from = new Date();
+    const to = new Date();
+    to.setHours(to.getHours() + hours);
+
+    return this.repositorySchedule
+      .createQueryBuilder('schedule')
+      .where('appointment_at > :from')
+      .andWhere('appointment_at < :to')
+      .setParameters({
+        from: from.toISOString().slice(0, 19).replace('T', ' '),
+        to: to.toISOString().slice(0, 19).replace('T', ' '),
+      })
+      .getMany();
+  }
 }

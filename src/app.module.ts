@@ -3,7 +3,11 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmAsyncConfig } from './config/typeorm.config';
 import { CustomerModule } from './customer/customer.module';
-import { ScheduleModule } from './schedule/schedule.module';
+import { ScheduleInnerModule } from './schedule/scheduleInnerModule';
+import { ScheduleModule } from '@nestjs/schedule';
+import { CronjobModule } from './cronjob/cronjob.module';
+import { NotificationService } from './notification/notification.service';
+import { NotificationModule } from './notification/notification.module';
 
 @Module({
   imports: [
@@ -11,10 +15,13 @@ import { ScheduleModule } from './schedule/schedule.module';
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    ScheduleModule.forRoot(),
     CustomerModule,
-    ScheduleModule,
+    ScheduleInnerModule,
+    CronjobModule,
+    NotificationModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [NotificationService],
 })
 export class AppModule {}
